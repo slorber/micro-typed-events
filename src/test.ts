@@ -24,7 +24,6 @@ test('basic usecase', () => {
   expect(listener2.mock.calls[1]).toEqual(['b']);
 });
 
-
 test('unsub 2 times is no-op', () => {
   const events = createEvents<string>();
   const listener1 = jest.fn();
@@ -37,6 +36,20 @@ test('unsub 2 times is no-op', () => {
 
   expect(listener1).toHaveBeenCalledTimes(1);
   expect(listener1.mock.calls[0]).toEqual(['a']);
+});
+
+test('subscribing during an event will not fire new listener', () => {
+  const events = createEvents<string>();
+  const listener = jest.fn();
+  events.subscribe(() => {
+    events.subscribe(listener);
+  });
+
+  events.emit('a');
+  events.emit('b');
+
+  expect(listener).toHaveBeenCalledTimes(1);
+  expect(listener.mock.calls[0]).toEqual(['b']);
 });
 
 test('unsub inside listener does not mess things up', () => {

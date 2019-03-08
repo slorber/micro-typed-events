@@ -50,7 +50,7 @@ export function createEvents<
     emit: (...args: ArgumentsType<Listener>) => {
       // take care of user trying to unsub inside a listener
       [...listeners].forEach(listener => {
-        if (listeners.indexOf(listener) !== -1) {
+        if (listeners.indexOf(listener) > -1) {
           listener(...args);
         }
       });
