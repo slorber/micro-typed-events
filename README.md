@@ -18,7 +18,7 @@ The smallest, most convenient, typesafe (with TS, but also works with normal JS)
 
 Unlike other event emitters, it does not use `on/off/once` methods but only a single subscribe method and returns an unsubscribe handle, which makes it more tiny, easier to type, more convenient to use with arrow functions.
 
-The most minimal code you need for a typesafe pub/sub system, and feature complete, making **suitable to include as a dependency on other libraries**.
+The most minimal code you need for a typesafe pub/sub system, and **feature complete**, making suitable to include as a dependency on other libraries.
 
 ## Install
 
