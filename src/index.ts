@@ -1,8 +1,8 @@
 type ArgumentsType<T> = T extends (...args: infer A) => any ? A : never;
 
-type UnsubscribeHandle = () => void;
+export type UnsubscribeHandle = () => void;
 
-interface TypedEvents<Listener extends (...args: any[]) => void> {
+export interface TypedEvents<Listener extends (...args: any[]) => void> {
   subscribe: (listener: Listener) => UnsubscribeHandle;
   emit: (...args: ArgumentsType<Listener>) => void;
 }
